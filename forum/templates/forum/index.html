@@ -2,9 +2,10 @@
 
 {% block content %}
 {% if latest_topic_list %}
-    <ul>
+    <ul class="list-group">
     {% for topic in latest_topic_list %}
-        <li><a href="{% url 'forum:topics' topic.id %}">{{ topic.title_text }}</a> - {{ topic.pub_date }}</li>
+        <li class="list-group-item">
+            <h3><a href="{% url 'forum:topics' topic.id %}">{{ topic.title_text }}</a> <small class="text-muted">{{ topic.pub_date }}</small></h3></li>
     {% endfor %}
     </ul>
 {% else %}
@@ -14,8 +15,12 @@
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 <form action="{% url 'forum:add_topic' %}" method="post">
     {% csrf_token %}
-    <input type="text" name="title" id="title" value="" placeholder="">
-    <input type="submit" value="Add new topic">
+    <div class="form-group">
+        <label for="comment">Title of topic</label>
+        <input class="form-control" type="text" name="title" id="title" value="" placeholder="">
+    </div>
+    <input class="btn btn-success" type="submit" value="Add new topic">
 </form>
+
 
 {% endblock %}

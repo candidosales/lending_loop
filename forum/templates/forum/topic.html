@@ -1,17 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{ topic.title_text }}</h1>
-<ul>
-    {% for comment in topic.comment_set.all %}
-        <li>{{ comment.comment_text }} - {{ comment.pub_date }}</li>
-    {% endfor %}
-</ul>
+<div class="row">
+    <div class="col-2">
+        <a class="btn btn-primary" href="{% url 'forum:index' %}" role="button">Back</a>
+    </div>
+    <div class="col-8">
+        <h1>Topic {{ topic.title_text }}</h1>
+    </div>
+    <div class="col-12">
+        <ul class="list-group">
+            {% for comment in topic.comment_set.all %}
+                <li class="list-group-item">{{ comment.comment_text }} - {{ comment.pub_date }}</li>
+            {% endfor %}
+        </ul>
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-<form action="{% url 'forum:add_comment' topic.id %}" method="post">
-    {% csrf_token %}
-    <input type="text" name="comment" id="comment" value="">
-    <input type="submit" value="Add new comment">
-</form>
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        <form action="{% url 'forum:add_comment' topic.id %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="comment">Your comment</label>
+                <input class="form-control" type="text" name="comment" id="comment" value="">
+            </div>
+            <input type="submit" class="btn btn-success" value="Add new comment">
+        </form>
+    </div>
+</div>
+
 {% endblock %}

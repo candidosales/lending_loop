@@ -14,14 +14,6 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Topic.objects.order_by('-pub_date')[:5]
 
-    # latest_topic_list = Topic.objects.order_by('-pub_date')[:5]
-    # context = { 'latest_topic_list': latest_topic_list }
-    # return render(request, 'forum/index.html', context)
-
-# def topics(request, topic_id):
-#     topic = get_object_or_404(Topic, pk=topic_id)
-#     return render(request, 'forum/topic.html', { 'topic': topic })
-
 class TopicView(generic.DetailView):
     model = Topic
     template_name = 'forum/topic.html'

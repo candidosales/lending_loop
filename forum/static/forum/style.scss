@@ -1,8 +1,25 @@
+
+
+// Variables
+@import 'variables';
+
+// Modules
+@import 'modules/button';
+@import 'modules/navbar';
+
 body {
     min-height: 75rem;
     padding-top: 4.5rem;
 }
 
+h1 {
+    font-size: 40px;
+    line-height: 50px;
+    font-weight: 500;
+    color: $color-purple;
+    font-family: $font-family-default;
+}
+
 nav {
-    background-color: #45295d;
+    background-color: $color-purple;
 }
