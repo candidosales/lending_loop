@@ -19,8 +19,7 @@
         <form action="{% url 'forum:add_comment' topic.id %}" method="post">
             {% csrf_token %}
             <div class="form-group">
-                <label for="comment">Your comment</label>
-                <input class="form-control" type="text" name="comment" id="comment" value="">
+                <input class="form-control" type="text" name="comment" id="comment" value="" placeholder="Your comment ...">
             </div>
             <input type="submit" class="btn btn-success" value="Add new comment">
         </form>

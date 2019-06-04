@@ -16,8 +16,7 @@
 <form action="{% url 'forum:add_topic' %}" method="post">
     {% csrf_token %}
     <div class="form-group">
-        <label for="comment">Title of topic</label>
-        <input class="form-control" type="text" name="title" id="title" value="" placeholder="">
+        <input class="form-control" type="text" name="title" id="title" value="" placeholder="Title ...">
     </div>
     <input class="btn btn-success" type="submit" value="Add new topic">
 </form>
