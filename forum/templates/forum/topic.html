@@ -1,8 +1,17 @@
-<h1>AQUI</h1>
+{% extends 'base.html' %}
 
+{% block content %}
 <h1>{{ topic.title_text }}</h1>
 <ul>
-    <!-- {% for comment in topic.comment_set.all %}
-        <li>{{ comment.comment_text }}</li>
-    {% endfor %} -->
+    {% for comment in topic.comment_set.all %}
+        <li>{{ comment.comment_text }} - {{ comment.pub_date }}</li>
+    {% endfor %}
 </ul>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form action="{% url 'forum:add_comment' topic.id %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="comment" id="comment" value="">
+    <input type="submit" value="Add new comment">
+</form>
+{% endblock %}

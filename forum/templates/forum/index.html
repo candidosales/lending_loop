@@ -1,10 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
 {% if latest_topic_list %}
     <ul>
     {% for topic in latest_topic_list %}
-        <!-- <li><a href="/topics/{{ topic.id }}/">{{ topic.title_text }}</a></li> -->
-        <li><a href="{% url 'forum:topics' topic.id %}">{{ topic.title_text }}</a></li>
+        <li><a href="{% url 'forum:topics' topic.id %}">{{ topic.title_text }}</a> - {{ topic.pub_date }}</li>
     {% endfor %}
     </ul>
 {% else %}
     <p>No topics are available.</p>
 {% endif %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form action="{% url 'forum:add_topic' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="title" id="title" value="" placeholder="">
+    <input type="submit" value="Add new topic">
+</form>
+
+{% endblock %}
