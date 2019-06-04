@@ -1,0 +1,10 @@
+{% if latest_topic_list %}
+    <ul>
+    {% for topic in latest_topic_list %}
+        <!-- <li><a href="/topics/{{ topic.id }}/">{{ topic.title_text }}</a></li> -->
+        <li><a href="{% url 'forum:topics' topic.id %}">{{ topic.title_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No topics are available.</p>
+{% endif %}
