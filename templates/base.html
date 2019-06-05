@@ -16,12 +16,36 @@
 
 <body>
     <nav class="navbar navbar-expand-md fixed-top">
-        <a class="navbar-brand" href="{% url 'forum:index' %}">Lending Loop</a>
+        <a class="navbar-brand" href="{% url 'forum:index' %}">
+            <img src="/static/forum/img/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+            Lending Loop
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                
+            </ul>
+            <span class="navbar-text navbar-user">
+                {% if user.is_authenticated %}
+                <ul>
+                    <li class="navbar-user__username">
+                        Hi {{ user.username }}!
+                    </li>
+                    <li>
+                        <a class="btn btn-dark" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                </ul>
+                {% else %}
+                    <a class="btn btn-primary" href="{% url 'login' %}">login</a>
+                {% endif %}
+            </span>
+        </div>
     </nav>
     <main role="main" class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <hr class="mt-0 mb-4">
                 {% block content %}
                 {% endblock %}
             </div>

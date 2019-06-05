@@ -22,7 +22,8 @@ def add_topic(request):
     if (request.POST['title']):
         topic = Topic(
             pub_date=timezone.now(),
-            title_text=request.POST['title']
+            title_text=request.POST['title'],
+            author_id=request.user.id
         )
         topic.save()
         return HttpResponseRedirect(reverse('forum:index'))
@@ -35,7 +36,8 @@ def add_comment(request, topic_id):
         comment = Comment(
             topic_id=topic_id,
             pub_date=timezone.now(),
-            comment_text=request.POST['comment']
+            comment_text=request.POST['comment'],
+            author_id=request.user.id
         )
         comment.save()
         return HttpResponseRedirect(reverse('forum:topics', args=(topic_id,)))

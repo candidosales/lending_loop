@@ -2,3 +2,23 @@
     color: $color-white;
     font-family: $font-family-default;
 }
+
+.navbar-user {
+    ul {
+        list-style: none;
+        display: flex;
+        margin-bottom: 0;
+        padding: 0;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    li {
+        padding-left: $global-gutter*2;
+    }
+}
+
+.navbar-user__username {
+    color: $color-white;
+    font-family: $font-family-default;
+}

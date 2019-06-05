@@ -5,6 +5,21 @@
   color: #fff;
   font-family: Poppins, sans-serif; }
 
+.navbar-user ul {
+  list-style: none;
+  display: flex;
+  margin-bottom: 0;
+  padding: 0;
+  flex-direction: row;
+  align-items: center; }
+
+.navbar-user li {
+  padding-left: 16px; }
+
+.navbar-user__username {
+  color: #fff;
+  font-family: Poppins, sans-serif; }
+
 body {
   min-height: 75rem;
   padding-top: 4.5rem; }

@@ -5,12 +5,14 @@
     <ul class="list-group">
     {% for topic in latest_topic_list %}
         <li class="list-group-item">
-            <h3><a href="{% url 'forum:topics' topic.id %}">{{ topic.title_text }}</a> <small class="text-muted">{{ topic.pub_date }}</small></h3></li>
+            <h3><a href="{% url 'forum:topics' topic.id %}">{{ topic.title_text }}</a> <small class="text-muted">{{ topic.pub_date | date:"M d, Y" }}</small></h3></li>
     {% endfor %}
     </ul>
 {% else %}
     <p>No topics are available.</p>
 {% endif %}
+
+<hr class="mt-0 mb-4">
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 <form action="{% url 'forum:add_topic' %}" method="post">
