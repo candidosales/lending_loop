@@ -38,7 +38,14 @@
                     </li>
                 </ul>
                 {% else %}
-                    <a class="btn btn-primary" href="{% url 'login' %}">login</a>
+                    <ul>
+                        <li>
+                            <a class="btn btn-dark" href="{% url 'signup' %}">Sign up</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-primary" href="{% url 'login' %}">login</a>
+                        </li>
+                    </ul>
                 {% endif %}
             </span>
         </div>

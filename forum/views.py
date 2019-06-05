@@ -4,7 +4,6 @@ from django.utils import timezone
 from django.urls import reverse
 from django.views import generic
 
-
 from .models import Topic, Comment
 # Create your views here.
 class IndexView(generic.ListView):

@@ -11,7 +11,7 @@
     <div class="col-12">
         <ul class="list-group">
             {% for comment in topic.comment_set.all %}
-                <li class="list-group-item">{{ comment.comment_text }} - {{ comment.pub_date | date:"M d, Y" }}</li>
+                <li class="list-group-item">{{ comment.comment_text }} - {{ comment.pub_date | date:"M d, Y" }} <br/> {{ comment.author.username }}</li>
             {% endfor %}
         </ul>
 
